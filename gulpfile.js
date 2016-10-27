@@ -14,7 +14,7 @@ gulp.task('style', function() {
 });
 
 // Minify compiled CSS
-gulp.task('minify-css', ['sass'], function() {
+gulp.task('minify-css', ['style'], function() {
     return gulp.src('vendor/materialize/css/materialize.css')
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
@@ -43,5 +43,5 @@ gulp.task('dev', ['browserSync', 'style', 'minify-css'], function() {
     gulp.watch('vendor/materialize/css/*.css', ['minify-css']);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch('*.html', browserSync.reload);
-    gulp.watch('js/**/*.js', browserSync.reload);
+    gulp.watch('js/*.js', browserSync.reload);
 });
